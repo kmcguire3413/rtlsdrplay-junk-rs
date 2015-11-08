@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `BlockOutput` enum in crate `rtlsdr`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, BlockOutput">
+
+    <title>rtlsdr::dsp::block::BlockOutput - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>rtlsdr</a>::<wbr><a href='../index.html'>dsp</a>::<wbr><a href='index.html'>block</a></p><script>window.sidebarCurrent = {name: 'BlockOutput', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content enum">
+<h1 class='fqn'><span class='in-band'>Enum <a href='../../index.html'>rtlsdr</a>::<wbr><a href='../index.html'>dsp</a>::<wbr><a href='index.html'>block</a>::<wbr><a class='enum' href=''>BlockOutput</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-25' class='srclink' href='../../../src/rtlsdr/dsp.rs.html#11-19'>[src]</a></span></h1>
+<pre class='rust enum'>pub enum BlockOutput&lt;O&gt; {
+    ErrorInputSizeInvalid(<a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>),
+    NeedMoreInput(<a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>),
+    Ready(<a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;O&gt;),
+}</pre><div class='docblock'><p>This is what all sources and adapters return. It supports the ability
+for the output to be valid or invalid, and also provides the ability
+to signal that more input data is needed.</p>
+</div><h2 class='variants'>Variants</h2>
+<table><tr><td id='variant.ErrorInputSizeInvalid'><code>ErrorInputSizeInvalid</code></td><td><div class='docblock'><p>The amount of data provided is not supported, because it was it was
+either too many or too few, and it has been discarded. The string
+will hopefully contain a useful diagnostic message.</p>
+</div></td></tr><tr><td id='variant.NeedMoreInput'><code>NeedMoreInput</code></td><td><div class='docblock'><p>The data was processed, but more if needed to produce some output.</p>
+</div></td></tr><tr><td id='variant.Ready'><code>Ready</code></td><td></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;O&gt; <a class='enum' href='../../../rtlsdr/dsp/block/enum.BlockOutput.html' title='rtlsdr::dsp::block::BlockOutput'>BlockOutput</a>&lt;O&gt;</code></h3><div class='impl-items'><h4 id='method.unwrap' class='method'><code>fn <a href='#method.unwrap' class='fnname'>unwrap</a>(self) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;O&gt;</code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "rtlsdr";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    
+    <script async src="../../../search-index.js"></script>
+</body>
+</html>

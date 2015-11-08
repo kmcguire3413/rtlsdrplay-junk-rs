@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["block","At the moment the entire DSP code base is built as blocks, which form pipelines. These pipelines can be branched and converged, and form a graph. The entire namespace is designed with as much performance as possible while still being safe and ergonomic in spirit of the Rust language."]]});

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `USB` struct in crate `rtlsdr`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, USB">
+
+    <title>rtlsdr::dsp::block::source::rtlsdr::usb::USB - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../../../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../../../../../index.html'>rtlsdr</a>::<wbr><a href='../../../../index.html'>dsp</a>::<wbr><a href='../../../index.html'>block</a>::<wbr><a href='../../index.html'>source</a>::<wbr><a href='../index.html'>rtlsdr</a>::<wbr><a href='index.html'>usb</a></p><script>window.sidebarCurrent = {name: 'USB', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../../../../../index.html'>rtlsdr</a>::<wbr><a href='../../../../index.html'>dsp</a>::<wbr><a href='../../../index.html'>block</a>::<wbr><a href='../../index.html'>source</a>::<wbr><a href='../index.html'>rtlsdr</a>::<wbr><a href='index.html'>usb</a>::<wbr><a class='struct' href=''>USB</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-334' class='srclink' href='../../../../../../src/rtlsdr/block/source/rtlsdr/usb.rs.html#53-55'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct USB {
+    // some fields omitted
+}</pre><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../../../../../../rtlsdr/dsp/block/source/rtlsdr/usb/struct.USB.html' title='rtlsdr::dsp::block::source::rtlsdr::usb::USB'>USB</a></code></h3><div class='impl-items'><h4 id='method.asyncreadchunk' class='method'><code>fn <a href='#method.asyncreadchunk' class='fnname'>asyncreadchunk</a>(&amp;self) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='type' href='../../../../../../rtlsdr/dsp/block/source/rtlsdr/usb/type.SAMPLE.html' title='rtlsdr::dsp::block::source::rtlsdr::usb::SAMPLE'>SAMPLE</a>&gt;</code></h4>
+<div class='docblock'><p>Read a single chunk of unknown size, <em>ONLY</em> if <code>async</code> was request when
+by the <code>RTLSDR::new</code> being called with <code>async</code> set to <code>true</code>. If not you
+must either manual setup async reading or call the syncread method.</p>
+
+<p>This is going to likely be what the offloader thread read from a single 
+USB event. It is generally going to be controlled from somewhere else.</p>
+
+<p>This provides an efficient way to process the offload queue.</p>
+</div><h4 id='method.asyncread' class='method'><code>fn <a href='#method.asyncread' class='fnname'>asyncread</a>(&amp;self, maxcnt: <a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='type' href='../../../../../../rtlsdr/dsp/block/source/rtlsdr/usb/type.SAMPLE.html' title='rtlsdr::dsp::block::source::rtlsdr::usb::SAMPLE'>SAMPLE</a>&gt;</code></h4>
+<div class='docblock'><p>Read a specified maximum number of samples, <em>ONLY</em> if <code>async</code> was
+requested by the <code>RTLSDR::new</code> being called with <code>async</code> set to <code>true</code>.
+If not you must either manual setup async reading or call the syncread
+method.</p>
+
+<p>This may be a little inefficient, since it might have to chop up some
+buffers to pull out this exact maximum number of bytes if avaliable. If
+you need to be efficient then consider using <code>asyncreadchunk</code>.</p>
+</div><h4 id='method.syncread' class='method'><code>fn <a href='#method.syncread' class='fnname'>syncread</a>(&amp;self, maxcnt: <a href='http://doc.rust-lang.org/nightly/std/primitive.isize.html'>isize</a>) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='type' href='../../../../../../rtlsdr/dsp/block/source/rtlsdr/usb/type.SAMPLE.html' title='rtlsdr::dsp::block::source::rtlsdr::usb::SAMPLE'>SAMPLE</a>&gt;</code></h4>
+<div class='docblock'><p>Read a specified maximum number of samples. <em>WARNING:</em> If used with
+<code>async</code> mode then the behavior is unknown currently.</p>
+
+<p>TODO: Make function to read <em>into</em> buffer, instead of creating a new
+      buffer for each invocation.</p>
+</div><h4 id='method.setcenterfreq' class='method'><code>fn <a href='#method.setcenterfreq' class='fnname'>setcenterfreq</a>(&amp;self, freq: <a href='http://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>)</code></h4>
+<div class='docblock'><p>Set the center frequency of the device.</p>
+</div><h4 id='method.getsamplerate' class='method'><code>fn <a href='#method.getsamplerate' class='fnname'>getsamplerate</a>(&amp;self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a></code></h4>
+<div class='docblock'><p>Get the current sample rate of the device.</p>
+</div><h4 id='method.setsamplerate' class='method'><code>fn <a href='#method.setsamplerate' class='fnname'>setsamplerate</a>(&amp;self, freq: <a href='http://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>)</code></h4>
+<div class='docblock'><p>Sets the sampling frequency.</p>
+</div><h4 id='method.setmanualtuner' class='method'><code>fn <a href='#method.setmanualtuner' class='fnname'>setmanualtuner</a>(&amp;self, on: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>Will enable or disable manual tuning.</p>
+</div><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>(index: <a href='http://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>, asyncmemsize: <a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='../../../../../../rtlsdr/dsp/block/source/rtlsdr/usb/struct.USB.html' title='rtlsdr::dsp::block::source::rtlsdr::usb::USB'>USB</a>&gt;</code></h4>
+<div class='docblock'><p>Create a new controling instance of the device.</p>
+</div><h4 id='method.isasync' class='method'><code>fn <a href='#method.isasync' class='fnname'>isasync</a>(&amp;self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Drop.html' title='core::ops::Drop'>Drop</a> for <a class='struct' href='../../../../../../rtlsdr/dsp/block/source/rtlsdr/usb/struct.USB.html' title='rtlsdr::dsp::block::source::rtlsdr::usb::USB'>USB</a></code></h3><div class='impl-items'><h4 id='method.drop' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/ops/trait.Drop.html#method.drop' class='fnname'>drop</a>(&amp;mut self)</code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='../../../../../../rtlsdr/dsp/block/trait.Source.html' title='rtlsdr::dsp::block::Source'>Source</a>&lt;<a class='struct' href='../../../../../../num/complex/struct.Complex.html' title='num::complex::Complex'>Complex</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.i8.html'>i8</a>&gt;&gt; for <a class='struct' href='../../../../../../rtlsdr/dsp/block/source/rtlsdr/usb/struct.USB.html' title='rtlsdr::dsp::block::source::rtlsdr::usb::USB'>USB</a></code></h3><div class='impl-items'><h4 id='method.read' class='method'><code>fn <a href='../../../../../../rtlsdr/dsp/block/trait.Source.html#method.read' class='fnname'>read</a>(&amp;mut self, amount: <a class='enum' href='../../../../../../rtlsdr/dsp/block/enum.SourceAmount.html' title='rtlsdr::dsp::block::SourceAmount'>SourceAmount</a>) -&gt; <a class='enum' href='../../../../../../rtlsdr/dsp/block/enum.BlockOutput.html' title='rtlsdr::dsp::block::BlockOutput'>BlockOutput</a>&lt;<a class='struct' href='../../../../../../num/complex/struct.Complex.html' title='num::complex::Complex'>Complex</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.i8.html'>i8</a>&gt;&gt;</code></h4>
+</div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='struct' href='../../../../../../rtlsdr/dsp/block/source/rtlsdr/usb/struct.USB.html' title='rtlsdr::dsp::block::source::rtlsdr::usb::USB'>USB</a></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='struct' href='../../../../../../rtlsdr/dsp/block/source/rtlsdr/usb/struct.USB.html' title='rtlsdr::dsp::block::source::rtlsdr::usb::USB'>USB</a></code></h4>
+<h4 id='method.clone_from' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../../../../../";
+        window.currentCrate = "rtlsdr";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../../../../../jquery.js"></script>
+    <script src="../../../../../../main.js"></script>
+    
+    <script async src="../../../../../../search-index.js"></script>
+</body>
+</html>

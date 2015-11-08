@@ -1,0 +1,10 @@
+[package]
+
+name = "rtlsdr"
+version = "0.0.1"
+authors = ["kmcguire <kmcg3413@gmail.com>"]
+
+#build = "build.rs"
+#links = "fftw3"
+
+[dependencies.num]
